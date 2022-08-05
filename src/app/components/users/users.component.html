@@ -1,3 +1,4 @@
+<a  routerLink="/add" class="btn btn-primary">Crear</a>
 <table class="table">
     <thead>
       <tr>
@@ -15,7 +16,7 @@
         <td>{{ user.gender }}</td>
         <td>{{ user.status }}</td>
         <td>
-          <button type="button" class="btn btn-primary">Editar</button>
+          <a class="btn btn-primary" [routerLink]="['/edit']" [queryParams]="{ id: user.id}">Editar</a>
           <button type="button" class="btn btn-danger">Eliminar</button>
         </td>
       </tr>

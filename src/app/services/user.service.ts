@@ -13,10 +13,27 @@ export class UserService {
     private http:HttpClient
   ) { 
     this.headers = new HttpHeaders();
-    //this.headers = this.headers.append();
+    this.headers = this.headers.append('Authorization','Bearer '+this.token);
   }
 
   getUsersAll(){
-    return this.http.get(`${this.url}users`);
+    return this.http.get(`${this.url}users`, { headers : this.headers });
   }
+
+  getUser( id:number ){
+    return this.http.get(`${this.url}users/${id}`, { headers : this.headers });
+  }
+
+  addUser( user:any ){
+    return this.http.post(`${this.url}users`, user, { headers : this.headers });
+  }
+
+  updateUser( id:number,user:any){
+    return this.http.put(`${this.url}users/${id}`, user, { headers : this.headers });
+  }
+
+  deleteUser( id:number){
+    return this.http.delete(`${this.url}users/${id}`, { headers : this.headers });
+  }
+
 }
